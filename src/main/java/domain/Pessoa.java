@@ -14,5 +14,15 @@ public class Pessoa {
         this.estadoCivil = estadoCivil;
     }
 
+    public String getNome() {
+        return nome;
+    }
 
+    public String getCpf() {
+        return cpf;
+    }
+
+    public EstadoCivil getEstadoCivil() {
+        return estadoCivil;
+    }
 }
