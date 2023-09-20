@@ -1,5 +1,7 @@
 package domain;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public abstract class Conta  {
@@ -7,7 +9,7 @@ public abstract class Conta  {
     private int numeroConta;
     private double saldo;
     private Pessoa pessoa;
-    private List<String> extrato;
+    private List<String> extrato = new ArrayList<>();
 
     public Conta(int numeroConta, Pessoa pessoa, double saldo){
         this.numeroConta = numeroConta;

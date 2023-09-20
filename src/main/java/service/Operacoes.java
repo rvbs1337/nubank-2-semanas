@@ -2,6 +2,7 @@ package service;
 
 import domain.Conta;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class Operacoes {
@@ -31,16 +32,16 @@ public class Operacoes {
 
         if(meses < 48 && meses > 32){
             parcela = (valorFinanciamento / meses)*1.05;
-
-            return meses + " Parcelas: R$ " + parcela + " Valor total: R$ " + (parcela * meses);
+            parcela = Math.floor(parcela * 100) / 100;
+            return meses + " Parcelas: R$ " + parcela + " Valor total: R$ " + Math.floor((parcela * meses) * 100)/100;
         }else if(meses > 24){
             parcela = (valorFinanciamento / meses)*1.04;
-
-            return meses + " Parcelas: R$ " + parcela + " Valor total: R$ " + (parcela * meses);
+            parcela = Math.floor(parcela * 100) / 100;
+            return meses + " Parcelas: R$ " + parcela + " Valor total: R$ " + Math.floor((parcela * meses) * 100)/100;
         } else if(meses > 12) {
             parcela = (valorFinanciamento / meses)*1.03;
-
-            return meses + " Parcelas: R$ " + parcela + " Valor total: R$ " + (parcela * meses);
+            parcela = Math.floor(parcela * 100) / 100;
+            return meses + " Parcelas: R$ " + parcela + " Valor total: R$ " + Math.floor((parcela * meses) * 100)/100;
         } else {
             return "Quantidade de meses indisponiveis para financiamento.";
         }
@@ -49,10 +50,10 @@ public class Operacoes {
     public double aplicar(Conta conta, double valorAplicacao, int meses){
         if(sacar(conta, valorAplicacao)){
             for(int i = 0; i < meses; i++) {
-                valorAplicacao += valorAplicacao*0.003;
+                valorAplicacao = valorAplicacao*1.03;
             }
-            depositar(conta, valorAplicacao);
-            return valorAplicacao;
+            depositar(conta, Math.floor(valorAplicacao));
+            return Math.floor(valorAplicacao);
         }
         return 0.0;
     }
