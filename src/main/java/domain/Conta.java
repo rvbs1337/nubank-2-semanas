@@ -2,7 +2,7 @@ package domain;
 
 import java.util.List;
 
-public abstract class Conta {
+public abstract class Conta  {
 
     private int numeroConta;
     private double saldo;
